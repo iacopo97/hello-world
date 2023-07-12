@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Local variables
-PROJECT_NAME=spt
+PROJECT_NAME=base
 PYTHON=3.8
 
 
@@ -28,6 +28,7 @@ echo
 # First search the default '~/miniconda3' and '~/anaconda3' paths. If
 # those do not exist, ask for user input
 CONDA_DIR=`realpath ~/miniconda3`
+CONDA_PREFIX= /usr/local
 
 echo "Using conda conda found at: ${CONDA_DIR}/etc/profile.d/conda.sh"
 
@@ -44,7 +45,6 @@ echo
 echo
 echo "⭐ Installing conda and pip dependencies"
 echo
-conda install pip nb_conda_kernels -y
 pip install matplotlib
 pip install plotly==5.9.0
 pip install "jupyterlab>=3" "ipywidgets>=7.6" jupyter-dash
