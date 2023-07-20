@@ -24,9 +24,9 @@ UNZIP_NAME = 'data_3d_semantics'
 WINDOWS = {
     'train': [
         '2013_05_28_drive_0000_sync/0000000002_0000000385'],
-    'val': [],
+    'val': ['2013_05_28_drive_0001_sync/0000000003_0000000385'],
 
-    'test': []}
+    'test': ['2013_05_28_drive_0002_sync/0000000004_0000000385']}
 
 SEQUENCES = {
     k: list(set(osp.dirname(x) for x in v)) for k, v in WINDOWS.items()}
