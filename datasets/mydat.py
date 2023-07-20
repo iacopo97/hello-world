@@ -53,8 +53,8 @@ def read_mydat_window(
 
         if semantic and 'scalar_Classification' in attributes:
             y = torch.LongTensor(window["vertex"]['scalar_Classification'].copy())
-            data.y = torch.from_numpy(ID2TRAINID)[y] if remap else y
-
+            #data.y = torch.from_numpy(ID2TRAINID)[y] if remap else y
+            data.y=y
         if instance and 'instance' in attributes:
             data.instance = torch.LongTensor(window["vertex"]['instance'].copy())
 
