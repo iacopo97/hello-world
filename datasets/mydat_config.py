@@ -23,7 +23,10 @@ UNZIP_NAME = 'data_3d_semantics'
 #   - 'data_3d_semantics/2013_05_28_drive_val.txt'
 WINDOWS = {
     'train': [
-        '2013_05_28_drive_0000_sync/0000000002_0000000385']}
+        '2013_05_28_drive_0000_sync/0000000002_0000000385'],
+    'val': [],
+
+    'test': []}
 
 SEQUENCES = {
     k: list(set(osp.dirname(x) for x in v)) for k, v in WINDOWS.items()}
@@ -141,7 +144,7 @@ labels = [
 NAME2LABEL = {label.name: label for label in labels}
 ID2LABEL = {label.id: label for label in labels}
 TRAINID2LABEL = {label.trainId: label for label in reversed(labels)}
-MYDATD2LABEL = {label.kittiId: label for label in labels}  # KITTI-360 ID to cityscapes ID
+MYDATD2LABEL = {label.mydatId: label for label in labels}  # KITTI-360 ID to cityscapes ID
 CATEGORY2LABELS = {}
 for label in labels:
     category = label.category
