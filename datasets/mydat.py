@@ -43,20 +43,20 @@ def read_mydat_window(
 
         if xyz:
             data.pos = torch.stack([
-                torch.FloatTensor(window["vertex"][axis])
+                torch.FloatTensor(window["vertex"][axis].copy())
                 for axis in ["x", "y", "z"]], dim=-1)
 
         if rgb:
             data.rgb = to_float_rgb(torch.stack([
-                torch.FloatTensor(window["vertex"][axis])
+                torch.FloatTensor(window["vertex"][axis].copy())
                 for axis in ["red", "green", "blue"]], dim=-1))
 
         if semantic and 'semantic' in attributes:
-            y = torch.LongTensor(window["vertex"]['semantic'])
+            y = torch.LongTensor(window["vertex"]['semantic'].copy())
             data.y = torch.from_numpy(ID2TRAINID)[y] if remap else y
 
         if instance and 'instance' in attributes:
-            data.instance = torch.LongTensor(window["vertex"]['instance'])
+            data.instance = torch.LongTensor(window["vertex"]['instance'].copy())
 
     return data
 
@@ -179,7 +179,7 @@ class MYDAT(BaseDataset):
         cloud.
         """
         id = self.id_to_base_id(id)
-        return 'DUCATI_F_0+800_0+830_binary.ply'
+        return '/content/superpoint_transformer/data/mydat/DUCATI_F_0+800_0+830_binary.ply'
         #return osp.join(
         #    'data_3d_semantics', id.split('/')[0], 'static',
         #    id.split('/')[1] + '.ply')
@@ -199,7 +199,7 @@ class MYDAT(BaseDataset):
         #raw_path = osp.join(
         #    self.raw_dir, 'data_3d_semantics', sequence_name, 'static',
         #    base_cloud_id + '.ply')
-        raw_path='DUCATI_F_0+800_0+830_binary.ply'
+        raw_path='/content/superpoint_transformer/data/mydat/DUCATI_F_0+800_0+830_binary.ply'
         return raw_path
 
     def make_submission(self, idx, pred, pos, submission_dir=None):
